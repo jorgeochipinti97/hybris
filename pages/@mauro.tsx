@@ -100,14 +100,14 @@ const FernandoLanese = () => {
                   xl={6}
                   justifyContent="center"
                   textAlign="center"
-                  sx={{ width:'100vw'}}
+
                 >
 
                   <Box
                     display="flex"
                     flexDirection="column"
-                    justifyContent="start"
-                    alignItems='start'
+                    justifyContent={isMobile ? "start" : "center"}
+                    alignItems={isMobile ? "start" : "center"}
                     sx={{
                       backgroundImage: {
                         xs: "url('/background.jpg')",
@@ -120,7 +120,7 @@ const FernandoLanese = () => {
                       filter: "opacity(20)",
                       backgroundPosition: "right",
                       height: "540px",
-                      width: "100vw",px:2
+                   px: 2
                     }}
                   >
                     <div data-aos="fade-right">
