@@ -50,7 +50,7 @@ const ref = useRef()
             objectFit: "cover", // hace que el video sea responsive y ocupe todo el ancho y alto disponibles
           }}
         >
-          <source src={`/${Math.random() > 0.5 ? 'video.mp4' : 'video1.mp4'}`} type="video/mp4" />
+          <source src={`/video.mp4`} type="video/mp4" />
         </Box>
         <Box
           sx={{ width: "100vw", minHeight: "100vh", zIndex: 100 }}
