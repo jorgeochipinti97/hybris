@@ -67,10 +67,11 @@ export default function Home() {
 
           <video
           muted
-
+playsInline
           loop
           autoPlay
           controls={false}
+
           style={{
             position: "fixed",
             top: 0,
