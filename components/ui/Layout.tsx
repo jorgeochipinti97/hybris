@@ -8,16 +8,17 @@ import { FooterComponent } from "./Footer";
 interface Props {
   children: any;
   title:string
+  isCharge:boolean
 }
 
-export const Layout: FC<Props> = ({ children, title }) => {
+export const Layout: FC<Props> = ({ children, title, isCharge }) => {
   return (
     <>
       <Head>
         <title>{title}</title>
       </Head>
       {children}
-      <FooterComponent/>
+      <FooterComponent isCharge={isCharge}/>
     </>
   );
 };
