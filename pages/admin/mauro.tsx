@@ -111,7 +111,7 @@ const PerfilPago = () => {
   };
 
   return (
-    <Layout title="Hybris Agency">
+    <Layout title='Hybris Agency' isCharge={true}>
       <>
         <Box
           display="flex"
