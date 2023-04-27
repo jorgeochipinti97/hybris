@@ -27,6 +27,8 @@ export default function Home() {
     setFrase(frases[indice]);
   };
 
+  const [isPlaying, setIsPlaying] = useState<boolean>(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
     generarFraseAleatoria()
@@ -35,6 +37,13 @@ export default function Home() {
       setIsCharge(true)
     }, 2000);
   }, [])
+
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.play();
+    }
+  }, [isPlaying]);
+
 
   useEffect(() => {
     const videos = document.getElementsByTagName('video');
@@ -60,7 +69,7 @@ export default function Home() {
       <Layout title="HYBRIS AGENCY" isCharge={isCharge}>
         <Box
           component="video"
-          autoPlay
+          ref={videoRef}
           loop
           muted
           style={{
@@ -95,7 +104,7 @@ export default function Home() {
 
                 <Box
                   display="flex"
-                  justifyContent="space-around"
+                  justifyContent="center"
                   flexDirection="column"
                   sx={{ mx: 3, height: "100%" }}
                 >
@@ -104,12 +113,12 @@ export default function Home() {
 
 
                       <Typography
-                        variant="h5"
+                        variant="subtitle1"
                         sx={{
                           letterSpacing: ".2em",
                           fontStyle: "italic",
                           textAlign: "center",
-                          textShadow: '1px 1px 1px 1px black',
+                          textShadow: '1px 1px 1px 1px black',mt:4
                         }}
                       >
                         {frase}
@@ -117,23 +126,23 @@ export default function Home() {
                     </div>
                   </Box>
                   <Box display="flex" justifyContent="center" sx={{ mt: 4, mb: 2 }}>
-                    <div data-aos="fade-left" data-aos-delay={1000}	>
+                    <div data-aos="fade-left">
                       <Button
                         variant="contained"
                         color="secondary"
                         endIcon={<ArrowForwardIcon />}
-                        sx={{ fontSize: '20px', fontFamily: 'Montserrat' }}
+                        sx={{ fontSize: '16px', fontFamily: 'Montserrat',my:5 }}
                       >
                         Trabaja con nosotros
                       </Button>
                     </div>
                   </Box>
-                  <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                  <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center',my:5}}>
                     <div data-aos="fade-up">
 
 
-                      <Typography variant="subtitle1" sx={{ textAlign: 'center', fontSize: '26px', fontFamily: 'Montserrat', lineHeight: '30px' }}>
-                        Hybris brinda la <br style={{ display: isMobile ? 'block' : 'none' }} /> oportunidad para <br style={{ display: isMobile ? 'block' : 'none' }} /> poder alcanzar las metas que te propongas
+                      <Typography variant="subtitle1" sx={{ textAlign: 'center', fontSize: '20px', fontFamily: 'Montserrat', lineHeight: '30px' }}>
+                        Hybris brinda la <br style={{ display: isMobile ? 'block' : 'none' }} /> oportunidad para <br style={{ display: isMobile ? 'block' : 'none' }} /> poder alcanzar las metas<br/> que te propongas
                       </Typography>
                     </div>
                   </Box>
@@ -326,7 +335,7 @@ export default function Home() {
                   <video
                     width="100%"
                     height="100%"
-                    autoPlay
+                    ref={videoRef}
                     loop
                     muted
                     controls={false}

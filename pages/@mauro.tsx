@@ -19,18 +19,8 @@ import LockIcon from "@mui/icons-material/Lock";
 import { Layout } from "@/components";
 import { ButtonComponent } from "@/components/ui/ButtonComponent";
 import { useState, useEffect } from "react";
-const styles = {
-  iconButton: {
-    fontSize: "32px",
+import ReactPlayer from "react-player";
 
-    color: "white",
-  },
-};
-
-interface Props {
-  width?: number;
-  height?: number;
-}
 
 const FernandoLanese = () => {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -71,7 +61,7 @@ const FernandoLanese = () => {
 
   return (
     <Layout title='Hybris Agency' isCharge={isCharge}>
-      <video
+      {/* <video
         autoPlay
         loop
         muted
@@ -88,13 +78,28 @@ const FernandoLanese = () => {
         }}
       >
         <source src="/video.mp4" type="video/mp4" />
-      </video>
+      </video> */}
+      <Box style={{
+        position: "fixed",
+        top: 0,
+        left: 0,
+        width: "100vw",
+        height: "100%",
+        zIndex: -1,
+        opacity: 0.3, // establece la opacidad del video
+        objectFit: "cover", // hace que el video sea responsive y ocupe todo el ancho y alto disponibles
+      }}>
+
+        <ReactPlayer url='https://res.cloudinary.com/djk4q3tys/video/upload/v1682572216/w08qbehub51afu2yjdsu.mp4' autoplay={true}  muted={true}/>
+      </Box>
+
+
       {isCharge
         && (
           <>
 
 
-            <Box sx={{ my: 5 }}  data-aos="fade-down">
+            <Box sx={{ my: 5 }} data-aos="fade-down">
               <Typography variant='body1' sx={{ fontFamily: 'Montserrat', textAlign: 'center', fontSize: '40px', fontWeigth: '700' }}>By Hybris</Typography>
             </Box>
             <Box
@@ -196,7 +201,7 @@ const FernandoLanese = () => {
 
             </Box>
           </>
-          )}
+        )}
     </Layout>
   );
 };
