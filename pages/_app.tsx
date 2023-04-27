@@ -11,7 +11,8 @@ export default function App({ Component, pageProps }: AppProps) {
       easing: "ease-out-cubic",
       once: true,
       offset: 200,
-      duration:1000
+      duration:1000,
+      delay:2000
     });
   }, []);
 

@@ -14,6 +14,7 @@ import { Layout } from "@/components";
 import { useEffect, useRef, useState } from "react";
 
 export default function Home() {
+  const [isLoaded, setIsLoaded] = useState(false);
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
   const [frase, setFrase] = useState("");
@@ -26,11 +27,23 @@ const ref = useRef()
 
 
   useEffect(() => {
-
     generarFraseAleatoria()
   }, [])
 
+  useEffect(() => {
+    const videos = document.getElementsByTagName('video');
+    const promises = [];
+    for (let i = 0; i < videos.length; i++) {
+      const promise = new Promise((resolve) => {
+        videos[i].onloadedmetadata = resolve;
+      });
+      promises.push(promise);
+    }
 
+    Promise.all(promises).then(() => {
+      setIsLoaded(true);
+    });
+  }, []);
   return (
     <>
       <Layout title="HYBRIS AGENCY">
