@@ -12,6 +12,7 @@ import { Box } from "@mui/system";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import { Layout } from "@/components";
 import { useEffect, useRef, useState } from "react";
+import Loader from "@/components/ui/Loader";
 
 export default function Home() {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -44,8 +45,13 @@ const ref = useRef()
       setIsLoaded(true);
     });
   }, []);
+
+  if (!isLoaded) {
+    return <Loader />;
+  }
   return (
     <>
+
       <Layout title="HYBRIS AGENCY">
         <Box
           component="video"
