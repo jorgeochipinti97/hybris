@@ -71,11 +71,11 @@ const FernandoLanese = () => {
 
   return (
     <Layout title='Hybris Agency' isCharge={isCharge}>
-      <Box
-        component="video"
+      <video
         autoPlay
         loop
         muted
+        controls={false}
         style={{
           position: "fixed",
           top: 0,
@@ -88,7 +88,7 @@ const FernandoLanese = () => {
         }}
       >
         <source src="/video.mp4" type="video/mp4" />
-      </Box>
+      </video>
       {isCharge
         && (
           <>
