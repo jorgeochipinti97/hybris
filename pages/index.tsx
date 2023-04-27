@@ -69,7 +69,7 @@ const ref = useRef()
             objectFit: "cover", // hace que el video sea responsive y ocupe todo el ancho y alto disponibles
           }}
         >
-          <source src={`/video.mp4`} type="video/mp4" />
+          <source src={`https://res.cloudinary.com/djk4q3tys/video/upload/v1682572216/w08qbehub51afu2yjdsu.mp4`} type="video/mp4" />
         </Box>
         <Box
           sx={{ width: "100vw", minHeight: "100vh", zIndex: 100 }}
