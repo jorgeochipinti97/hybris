@@ -52,6 +52,11 @@ export default function Home() {
     });
   }, []);
 
+
+  const vidRef=useRef();
+
+  useEffect(() => { vidRef.current.play(); },[]);
+
   if (!isLoaded) {
     return <></>;
   }
@@ -61,11 +66,11 @@ export default function Home() {
       <Layout title="HYBRIS AGENCY" isCharge={isCharge}>
 
           <video
-
-
           muted
+          ref={ vidRef }
           loop
           autoPlay
+          controls={false}
           style={{
             position: "fixed",
             top: 0,
@@ -330,10 +335,10 @@ export default function Home() {
                       <video
                         width="100%"
                         height="100%"
-autoPlay
-                        loop
                         muted
+                        loop
                         controls={false}
+                        autoPlay
                       >
                         <source src="/produccion.mp4" type="video/mp4" />
                       </video>
