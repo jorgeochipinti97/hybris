@@ -20,6 +20,7 @@ import { Layout } from "@/components";
 import { ButtonComponent } from "@/components/ui/ButtonComponent";
 import { useState, useEffect } from "react";
 import ReactPlayer from "react-player";
+import { BackgroundVideo } from "@/components/ui/BackgroundVideo";
 
 
 const FernandoLanese = () => {
@@ -61,39 +62,7 @@ const FernandoLanese = () => {
 
   return (
     <Layout title='Hybris Agency' isCharge={isCharge}>
-      {/* <video
-        autoPlay
-        loop
-        muted
-        controls={false}
-        style={{
-          position: "fixed",
-          top: 0,
-          left: 0,
-          width: "100vw",
-          height: "100%",
-          zIndex: -1,
-          opacity: 0.3, // establece la opacidad del video
-          objectFit: "cover", // hace que el video sea responsive y ocupe todo el ancho y alto disponibles
-        }}
-      >
-        <source src="/video.mp4" type="video/mp4" />
-      </video> */}
-      <Box style={{
-        position: "fixed",
-        top: 0,
-        left: 0,
-        width: "100vw",
-        height: "100%",
-        zIndex: -1,
-        opacity: 0.3, // establece la opacidad del video
-        objectFit: "cover", // hace que el video sea responsive y ocupe todo el ancho y alto disponibles
-      }}>
-
-        <ReactPlayer url='https://res.cloudinary.com/djk4q3tys/video/upload/v1682572216/w08qbehub51afu2yjdsu.mp4' autoplay={true}  muted={true}/>
-      </Box>
-
-
+      <BackgroundVideo />
       {isCharge
         && (
           <>
