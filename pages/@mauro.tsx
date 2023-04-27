@@ -85,7 +85,7 @@ const FernandoLanese = () => {
               <Grid
                 container
                 sx={{
-                  m: 2,
+
                   width: "100vw",
                   borderRadius: '9px',
                   backgroundColor: "rgba(0, 0, 0,0.40)",
@@ -100,12 +100,14 @@ const FernandoLanese = () => {
                   xl={6}
                   justifyContent="center"
                   textAlign="center"
+                  sx={{ width:'100vw'}}
                 >
 
                   <Box
                     display="flex"
                     flexDirection="column"
-                    justifyContent="center"
+                    justifyContent="start"
+                    alignItems='start'
                     sx={{
                       backgroundImage: {
                         xs: "url('/background.jpg')",
@@ -117,8 +119,8 @@ const FernandoLanese = () => {
                       backgroundSize: "cover",
                       filter: "opacity(20)",
                       backgroundPosition: "right",
-                      height: "90vh",
-                      width: "100%",
+                      height: "60vh",
+                      width: "100vw",px:2
                     }}
                   >
                     <div data-aos="fade-right">
@@ -129,7 +131,7 @@ const FernandoLanese = () => {
                     </div>
 
                     <div data-aos="fade-right">
-                      <ButtonComponent name='TikTok' url='' icon={<MusicNoteIcon sx={{ fontSize: 33, borderRadius: "9px", mx: 2, backgroundColor: 'white', color: "black", border: "3px solid black", }} />} />
+                      <ButtonComponent name='TikTok' url='' icon={<MusicNoteIcon sx={{ fontSize: 33, borderRadius: "9px", mx: 2, backgroundColor: 'black', color: "white", border: "3px solid black", }} />} />
                     </div>
                     <div data-aos="fade-left">
                       <ButtonComponent name='YouTube' url='' icon={<YouTubeIcon sx={{ fontSize: 32, backgroundColor: 'white', borderRadius: '9px', mx: 2, color: "red" }} />} />

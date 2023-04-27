@@ -24,7 +24,7 @@ export const ButtonComponent = ({ name, url, icon }: Props) => {
                         backgroundColor: { xs: "rgba(214, 195, 184,0.8)", sm: "rgba(214, 195, 184,0.8)", md: "rgb(214, 195, 184)", lg: "rgb(214, 195, 184)", xl: "rgb(214, 195, 184)" },
                         borderRadius: "9px",
                         border: '1px solid #6B3710',
-                        width: '90%', cursor:'pointer'
+                        width: '200px', cursor:'pointer'
 
                     }}
                 >
