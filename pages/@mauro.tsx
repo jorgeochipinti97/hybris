@@ -68,8 +68,11 @@ const FernandoLanese = () => {
           <>
 
 
-            <Box sx={{ my: 5 }} data-aos="fade-down">
-              <Typography variant='body1' sx={{ fontFamily: 'Montserrat', textAlign: 'center', fontSize: '40px', fontWeigth: '700' }}>By Hybris</Typography>
+            <Box sx={{ mt: 5 }} data-aos="fade-down">
+              <Typography variant='body1' sx={{ fontFamily: 'Montserrat', textAlign: 'center', fontSize: '40px', fontWeigth: '700' }}>Mauro Bellizzi</Typography>
+            </Box>
+            <Box sx={{ mb: 5 }} data-aos="fade-down">
+              <Typography variant='body1' sx={{ fontFamily: 'Montserrat', textAlign: 'center', fontSize: '20px', fontWeigth: '700' }}>By Hybris</Typography>
             </Box>
             <Box
               sx={{ color: "white", width: "100vw" }}
@@ -118,15 +121,6 @@ const FernandoLanese = () => {
                       width: "100%",
                     }}
                   >
-                    <Box sx={{ my: 6 }}>
-                      <Typography
-                        variant="body1"
-                        sx={{ textAlign: "center", textShadow: "6px 6px 8px black", fontFamily: 'Montserrat', fontSize: '40px' }}
-                      >
-                        Mauro Bellizzi
-                      </Typography>
-                    </Box>
-
                     <div data-aos="fade-right">
                       <ButtonComponent name='Instagram' url='' icon={<InstagramIcon sx={{ fontSize: 32, mx: 2, color: "#962fbf", backgroundColor: 'white', borderRadius: '9px' }} />} />
                     </div>
