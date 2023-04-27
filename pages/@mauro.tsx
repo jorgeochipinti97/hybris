@@ -7,6 +7,8 @@ import {
   CardContent,
   Typography,
   Button,
+  useMediaQuery,
+  useTheme,
 } from "@mui/material";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import YouTubeIcon from "@mui/icons-material/YouTube";
@@ -15,6 +17,8 @@ import TwitterIcon from "@mui/icons-material/Twitter";
 import ArrowRightAltIcon from "@mui/icons-material/ArrowRightAlt";
 import LockIcon from "@mui/icons-material/Lock";
 import { Layout } from "@/components";
+import { ButtonComponent } from "@/components/ui/ButtonComponent";
+import { useState, useEffect } from "react";
 const styles = {
   iconButton: {
     fontSize: "32px",
@@ -29,238 +33,170 @@ interface Props {
 }
 
 const FernandoLanese = () => {
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [isCharge, setIsCharge] = useState(false);
+  const theme = useTheme();
+
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+
+  useEffect(() => {
+
+
+    setTimeout(() => {
+      setIsCharge(true)
+    }, 2000);
+  }, [])
+
+  useEffect(() => {
+    const videos = document.getElementsByTagName('video');
+    const promises = [];
+    for (let i = 0; i < videos.length; i++) {
+      const promise = new Promise((resolve) => {
+        videos[i].onloadedmetadata = resolve;
+      });
+      promises.push(promise);
+    }
+
+    Promise.all(promises).then(() => {
+      setIsLoaded(true);
+    });
+  }, []);
+
+  if (!isLoaded) {
+    return <></>;
+  }
+
+
+
+
   return (
-    <Layout title='Hybris Agency' isCharge={true}>
+    <Layout title='Hybris Agency' isCharge={isCharge}>
       <Box
-        sx={{ color: "white", width: "100vw" }}
-        display="flex"
-        justifyContent="center"
+        component="video"
+        autoPlay
+        loop
+        muted
+        style={{
+          position: "fixed",
+          top: 0,
+          left: 0,
+          width: "100vw",
+          height: "100%",
+          zIndex: -1,
+          opacity: 0.3, // establece la opacidad del video
+          objectFit: "cover", // hace que el video sea responsive y ocupe todo el ancho y alto disponibles
+        }}
       >
-        <Box
-          component="video"
-          autoPlay
-          loop
-          muted
-          style={{
-            position: "fixed",
-            top: 0,
-            left: 0,
-            width: "100vw",
-            height: "100%",
-            zIndex: -1,
-            opacity: 0.3, // establece la opacidad del video
-            objectFit: "cover", // hace que el video sea responsive y ocupe todo el ancho y alto disponibles
-          }}
-        >
-          <source src="/video.mp4" type="video/mp4" />
-        </Box>
-        <Grid
-          container
-          sx={{
-            m: 5,
-            width: "100vw",
-            border: "1px solid black",
-            backgroundColor: "rgba(0, 0, 0, 0.90)",
-          }}
-        >
-          <Grid
-            item
-            xs={12}
-            sm={12}
-            md={6}
-            lg={6}
-            xl={6}
-            justifyContent="center"
-            textAlign="center"
-          >
+        <source src="/video.mp4" type="video/mp4" />
+      </Box>
+      {isCharge
+        && (
+          <>
+
+
+            <Box sx={{ my: 5 }}  data-aos="fade-down">
+              <Typography variant='body1' sx={{ fontFamily: 'Montserrat', textAlign: 'center', fontSize: '40px', fontWeigth: '700' }}>By Hybris</Typography>
+            </Box>
             <Box
+              sx={{ color: "white", width: "100vw" }}
               display="flex"
-              flexDirection="column"
               justifyContent="center"
-              sx={{
-                backgroundImage: {
-                  xs: "url('/background.jpg')",
-                  sm: "url('/background.jpg')",
-                  md: "none",
-                  lg: "none",
-                  xl: "none",
-                },
-                backgroundSize: "cover",
-                filter: "opacity(20)",
-                backgroundPosition: "right",
-                height: "90vh",
-                width: "100%",
-              }}
+              data-aos="fade-down"
             >
-              <Box sx={{ my: 6 }}>
-                <Typography
-                  variant="h3"
-                  sx={{ textAlign: "center", textShadow: "6px 6px 8px black" }}
-                >
-                  Mauro Bellizi
-                </Typography>
-              </Box>
-              <Box
-                display="flex"
-                justifyContent="start"
-                alignItems="center"
+
+
+              <Grid
+                container
                 sx={{
-                  mx: 4,
-                  my: 3,
-                  backgroundColor: "rgba(0, 0, 0, 0.90)",
-                  borderRadius: "9px",
+                  m: 2,
+                  width: "100vw",
+                  borderRadius: '9px',
+                  backgroundColor: "rgba(0, 0, 0,0.40)",
                 }}
               >
-                <IconButton
-                  size="large"
-                  color="secondary"
-                  sx={{
-                    fontSize: "1rem",
-                    width: "100%",
-                    border: "1px solid purple",
-                    borderRadius: "9px",
-                    py: 2,
-                  }}
+                <Grid
+                  item
+                  xs={12}
+                  sm={12}
+                  md={6}
+                  lg={6}
+                  xl={6}
+                  justifyContent="center"
+                  textAlign="center"
                 >
-                  <InstagramIcon sx={{ fontSize: 32, mx: 2, color: "white" }} />
-                  <Typography variant="button">Instagram</Typography>
-                </IconButton>
-              </Box>
-              <Box
-                display="flex"
-                justifyContent="start"
-                alignItems="center"
-                sx={{
-                  mx: 4,
-                  my: 3,
-                  backgroundColor: "rgba(0, 0, 0, 0.90)",
-                  borderRadius: "9px",
-                }}
-              >
-                <IconButton
-                  size="large"
-                  color="secondary"
-                  sx={{
-                    fontSize: "1rem",
-                    width: "100%",
-                    border: "1px solid purple",
-                    borderRadius: "9px",
-                    py: 2,
-                  }}
-                >
-                  <TwitterIcon sx={{ fontSize: 32, mx: 2, color: "white" }} />
-                  <Typography variant="button">Twitter</Typography>
-                </IconButton>
-              </Box>
-              <Box
-                display="flex"
-                justifyContent="start"
-                alignItems="center"
-                sx={{
-                  mx: 4,
-                  my: 3,
-                  backgroundColor: "rgba(0, 0, 0, 0.90)",
-                  borderRadius: "9px",
-                }}
-              >
-                <IconButton
-                  size="large"
-                  color="secondary"
-                  sx={{
-                    fontSize: "1rem",
-                    width: "100%",
-                    border: "1px solid purple",
-                    borderRadius: "9px",
-                    py: 2,
-                  }}
-                >
-                  <MusicNoteIcon
+
+                  <Box
+                    display="flex"
+                    flexDirection="column"
+                    justifyContent="center"
                     sx={{
-                      fontSize: 33,
-                      borderRadius: "9px",
-                      mx: 2,
-                      color: "white",
-                      border: "1px solid white",
+                      backgroundImage: {
+                        xs: "url('/background.jpg')",
+                        sm: "url('/background.jpg')",
+                        md: "none",
+                        lg: "none",
+                        xl: "none",
+                      },
+                      backgroundSize: "cover",
+                      filter: "opacity(20)",
+                      backgroundPosition: "right",
+                      height: "90vh",
+                      width: "100%",
+                    }}
+                  >
+                    <Box sx={{ my: 6 }}>
+                      <Typography
+                        variant="body1"
+                        sx={{ textAlign: "center", textShadow: "6px 6px 8px black", fontFamily: 'Montserrat', fontSize: '40px' }}
+                      >
+                        Mauro Bellizzi
+                      </Typography>
+                    </Box>
+
+                    <div data-aos="fade-right">
+                      <ButtonComponent name='Instagram' url='' icon={<InstagramIcon sx={{ fontSize: 32, mx: 2, color: "#962fbf", backgroundColor: 'white', borderRadius: '9px' }} />} />
+                    </div>
+                    <div data-aos="fade-left">
+                      <ButtonComponent name='Twitter' url='' icon={<TwitterIcon sx={{ fontSize: 32, mx: 2, color: "#00acee", backgroundColor: 'white', borderRadius: '9px' }} />} />
+                    </div>
+
+                    <div data-aos="fade-right">
+                      <ButtonComponent name='TikTok' url='' icon={<MusicNoteIcon sx={{ fontSize: 33, borderRadius: "9px", mx: 2, backgroundColor: 'white', color: "black", border: "3px solid black", }} />} />
+                    </div>
+                    <div data-aos="fade-left">
+                      <ButtonComponent name='YouTube' url='' icon={<YouTubeIcon sx={{ fontSize: 32, backgroundColor: 'white', borderRadius: '9px', mx: 2, color: "red" }} />} />
+
+                    </div>
+                    <div data-aos="fade-right">
+
+                      <ButtonComponent name='OnlyFans' url='' icon={<LockIcon sx={{ fontSize: 32, mx: 2, color: "#00acee", backgroundColor: 'white', borderRadius: '9px' }} />} />
+                    </div>
+                  </Box>
+                </Grid>
+                <Grid xs={12} sm={12} md={6} lg={6} xl={6}>
+                  <Box
+                    sx={{
+                      backgroundImage: "url('/background.jpg')",
+                      backgroundSize: "cover",
+                      backgroundPosition: "right",
+                      height: "100vh",
+                      width: "100%",
+                      opacity: 0.9,
+                      display: {
+                        xs: "none",
+                        sm: "none",
+                        md: "block",
+                        lg: "block",
+                        xl: "block",
+                      },
                     }}
                   />
-                  <Typography variant="button">TikTok</Typography>
-                </IconButton>
-              </Box>
-              <Box
-                display="flex"
-                justifyContent="start"
-                alignItems="center"
-                sx={{
-                  mx: 4,
-                  my: 3,
-                  backgroundColor: "rgba(0, 0, 0, 0.90)",
-                  borderRadius: "9px",
-                }}
-              >
-                <IconButton
-                  size="large"
-                  color="secondary"
-                  sx={{
-                    fontSize: "1rem",
-                    width: "100%",
-                    border: "1px solid purple",
-                    borderRadius: "9px",
-                    py: 2,
-                  }}
-                >
-                  <YouTubeIcon sx={{ fontSize: 32, mx: 2, color: "white" }} />
-                  <Typography variant="button">Youtube</Typography>
-                </IconButton>
-              </Box>
-              <Box
-                display="flex"
-                justifyContent="start"
-                alignItems="center"
-                sx={{
-                  mx: 4,
-                  my: 3,
-                  backgroundColor: "rgba(0, 0, 0, 0.90)",
-                  borderRadius: "9px",
-                }}
-              >
-                <IconButton
-                  size="large"
-                  color="secondary"
-                  sx={{
-                    fontSize: "1rem",
-                    width: "100%",
-                    border: "1px solid purple",
-                    borderRadius: "9px",
-                    py: 2,
-                  }}
-                >
-                  <LockIcon sx={{ fontSize: 32, mx: 2, color: "white" }} />
-                  <Typography variant="button">OnlyFans</Typography>
-                </IconButton>
-              </Box>
+                </Grid>
+              </Grid>
+
             </Box>
-          </Grid>
-          <Grid xs={12} sm={12} md={6} lg={6} xl={6}>
-            <Box
-              sx={{
-                backgroundImage: "url('/background.jpg')",
-                backgroundSize: "cover",
-                backgroundPosition: "right",
-                height: "100vh",
-                width: "100%",
-                opacity: 0.9,
-                display: {
-                  xs: "none",
-                  sm: "none",
-                  md: "block",
-                  lg: "block",
-                  xl: "block",
-                },
-              }}
-            />
-          </Grid>
-        </Grid>
-      </Box>
+          </>
+          )}
     </Layout>
   );
 };
