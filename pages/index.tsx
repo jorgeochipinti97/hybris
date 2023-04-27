@@ -21,6 +21,8 @@ export default function Home() {
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
   const [frase, setFrase] = useState("");
   const ref = useRef()
+  const vidRef=useRef<any>();
+
   const frases = ["El éxito no es una cuestión de suerte, sino de perseverancia en alcanzar lo que parece imposible", "Lo que parece imposible sólo es un reto más para aquellos que no temen al fracaso", "La única manera de hacer posible lo imposible es creer en uno mismo y trabajar duro para lograrlo", "Lo que parece imposible a primera vista, puede ser posible con esfuerzo y dedicación"]
   const generarFraseAleatoria = () => {
     const indice = Math.floor(Math.random() * 3);
@@ -53,9 +55,8 @@ export default function Home() {
   }, []);
 
 
-  const vidRef=useRef();
 
-  useEffect(() => { vidRef.current.play(); },[]);
+  useEffect(() => { vidRef.current &&  !vidRef.current.play(); },[]);
 
   if (!isLoaded) {
     return <></>;
