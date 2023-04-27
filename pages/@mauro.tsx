@@ -30,7 +30,7 @@ interface Props {
 
 const FernandoLanese = () => {
   return (
-    <Layout title='Hybris Agency'>
+    <Layout title='Hybris Agency' isCharge={true}>
       <Box
         sx={{ color: "white", width: "100vw" }}
         display="flex"
