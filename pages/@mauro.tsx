@@ -119,7 +119,7 @@ const FernandoLanese = () => {
                       backgroundSize: "cover",
                       filter: "opacity(20)",
                       backgroundPosition: "right",
-                      height: "60vh",
+                      height: "540px",
                       width: "100vw",px:2
                     }}
                   >
