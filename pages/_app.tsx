@@ -12,7 +12,7 @@ export default function App({ Component, pageProps }: AppProps) {
       once: true,
       offset: 200,
       duration:1000,
-      delay:2000
+      delay:1000
     });
   }, []);
 
